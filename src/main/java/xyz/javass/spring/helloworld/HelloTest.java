@@ -78,6 +78,20 @@ public class HelloTest {
      //因此别名不能和id一样，如果一样则由IoC容器负责消除冲突
      System.out.println(h6Alias.length);
      Assert.assertEquals(0, h6Alias.length);
+     
+     //通过Alias指定别名
+     HelloApi h8 = beanfactory.getBean("h8", HelloApi.class);
+     h8.sayHello();
+     HelloApi h9 = beanfactory.getBean("h9", HelloApi.class);
+     h9.sayHello();
+     String[] beanAlias = beanfactory.getAliases("h7");
+     System.out.println("=======别名========");
+     for(String alias : beanAlias) {
+         System.out.println(alias);
+     }
+    System.out.println("=======别名========");
+     Assert.assertEquals(2, beanAlias.length);
+
 
  }
     

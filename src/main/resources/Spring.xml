@@ -16,6 +16,10 @@
 <bean  name="h2,h3,h4,h5" class="xyz.javass.spring.helloworld.HelloImpl"/>
 <!-- 别名和ID不能重复否则容器会自动消除重复-->
 <bean  name="h6" id="h6" class="xyz.javass.spring.helloworld.HelloImpl"/>
+<!-- 使用alias标签指定别名 -->
+<bean  name="h7" class="xyz.javass.spring.helloworld.HelloImpl"/>
+<alias name="h7" alias="h8"/>
+<alias name="h7" alias="h9"/>
 </beans>
 
 
