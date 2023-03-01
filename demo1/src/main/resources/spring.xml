@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--导入多个配置文件的格式-->
+    <!--<import resource="xml文件路径"/>-->
+
+    <!--定义一个bean
+        id:唯一标识
+        class:类包路径
+        name:表示bean别名，可以用多个别名用逗号或分号或空格隔开，一般命名要采用小驼峰命名法
+    -->
+    <!--使用构造方法创建实例-->
+    <bean id="messageServiceImpl" class="org.example.byConstructor.MessageServiceImpl" >
+        <!--使用构造方法注入属性
+        需要注意：如果没有下面代码，那么是使用类隐式默认构造方法
+        -->
+        <constructor-arg name="userName" value="Tom"/>
+        <constructor-arg name="age" value="10"/>
+    </bean>
+    <bean id="messagePrinter" class="org.example.byConstructor.MessagePrinter">
+        <!--使用构造方法注入属性 ref表示属性是一个类-->
+        <constructor-arg name="messageService" ref="messageServiceImpl"/>
+    </bean>
+
+    <bean id="staticFactoryCase1" >
+
+    </bean>
+</beans>
