@@ -5,25 +5,38 @@
     <!--导入多个配置文件的格式-->
     <!--<import resource="xml文件路径"/>-->
 
-    <!--定义一个bean
+    <!--
+        bean属性
         id:唯一标识
         class:类包路径
         name:表示bean别名，可以用多个别名用逗号或分号或空格隔开，一般命名要采用小驼峰命名法
     -->
-    <!--使用构造方法创建实例-->
     <bean id="messageServiceImpl" class="org.example.byConstructor.MessageServiceImpl" >
-        <!--使用构造方法注入属性
-        需要注意：如果没有下面代码，那么是使用类隐式默认构造方法
+        <!--
+            使用构造方法注入属性
+            name:属性名
+            value:属性值
+            type:属性的类型，例如其names没有指明，也就是其属性名没有指明，当传入的value的值都是数字时，
+            但构造函数形参一个是String一个是int，无法分辨，这时候就需要使用type指定类型
+
+            index:上述问题还可以通过该属性指定传入参数的位置来解决，例如形参第一个是String第二个是int，那么为了区分可用
+            index = 0 和 index = 1 解决，注意这里index = 0就是对应的位置1
+
+            需要注意：如果没有下面代码，那么是使用类隐式默认构造方法，默认会创建一个实例，类似Type obj = new Obj()
         -->
         <constructor-arg name="userName" value="Tom"/>
         <constructor-arg name="age" value="10"/>
     </bean>
+
     <bean id="messagePrinter" class="org.example.byConstructor.MessagePrinter">
-        <!--使用构造方法注入属性 ref表示属性是一个类-->
+        <!--
+            使用构造方法注入属性
+            ref:表示属性的类型是一个类，指向bean的ID
+        -->
         <constructor-arg name="messageService" ref="messageServiceImpl"/>
     </bean>
 
-    <bean id="staticFactoryCase1" >
+    <!--<bean id="staticFactoryCase1" >-->
 
-    </bean>
+    <!--</bean>-->
 </beans>

@@ -2,7 +2,7 @@ package org.example.byConstructor;
 
 import org.springframework.stereotype.Service;
 
-@Service // 此注解表示声明一个Javabean
+
 public class MessageServiceImpl implements MessageService {
     private String userName;
     private int age;
@@ -22,6 +22,6 @@ public class MessageServiceImpl implements MessageService {
      * @return 用户名
      */
     public String getMessage() {
-        return "Hi"+" "+userName+"age is " + age;
+        return "Hi"+" "+userName+"，age is " + age;
     }
 }
