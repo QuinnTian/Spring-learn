@@ -4,32 +4,32 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!--Config by constructor-based DI-->
     <!-- Definition for textEditor bean -->
-    <bean id = "textEditor" class = "org.example.Constructor_DI.TextEditor">
+    <bean id = "textEditor" class = "com.ismeoh.DI.useXml.Constructor_DI.TextEditor">
         <constructor-arg ref = "spellChecker"/>
     </bean>
+    <!-- Definition for spellChecker bean -->
+    <bean id = "spellChecker" class = "com.ismeoh.DI.useXml.Constructor_DI.SpellChecker"/>
 
     <!--Config by setter-based DI-->
-    <!-- Definition for spellChecker bean -->
-    <bean id = "spellChecker" class = "org.example.Constructor_DI.SpellChecker"/>
     <!-- Definition for textEditor bean -->
-    <bean id = "textEditor2" class = "org.example.Setter_DI.TextEditor">
+    <bean id = "textEditor2" class = "com.ismeoh.DI.useXml.Setter_DI.TextEditor">
         <property name = "spellChecker" ref = "spellChecker2"/>
     </bean>
 
     <!-- Definition for spellChecker bean -->
-    <bean id = "spellChecker2" class = "org.example.Setter_DI.SpellChecker"/>
+    <bean id = "spellChecker2" class = "com.ismeoh.DI.useXml.Setter_DI.SpellChecker"/>
 
     <!--Config to Inject innerBean for bean-->
     <!-- Definition for textEditor bean using inner bean -->
-    <bean id = "textEditor3" class = "org.example.Inject_InnerBean.TextEditor">
+    <bean id = "textEditor3" class = "com.ismeoh.DI.useXml.Inject_InnerBean.TextEditor">
         <property name = "spellChecker">
-            <bean id = "spellChecker3" class = "org.example.Inject_InnerBean.SpellChecker"/>
+            <bean  class = "com.ismeoh.DI.useXml.Inject_InnerBean.SpellChecker"/>
         </property>
     </bean>
 
     <!--Config to inject javaCollection-->
     <!-- Definition for javaCollection -->
-    <bean id = "javaCollection" class = "org.example.Inject_Collection.JavaCollection">
+    <bean id = "javaCollection" class = "com.ismeoh.DI.useXml.Inject_Collection.JavaCollection">
 
         <!-- results in a setAddressList(java.util.List) call -->
         <property name = "addressList">
@@ -73,5 +73,28 @@
         </property>
     </bean>
 
+    <!--Config to Auto Wiring by Name-->
+    <!-- Definition for textEditor bean -->
+    <bean id = "textEditor4" class = "com.ismeoh.DI.useXml.Beans_Auto_Wiring.ByName.TextEditor" autowire="byName">
+        <!--Warning : The name of property tag is the second half of the name of class's method named setter!
+        such as setName convert to name to match bean id or name-,
+        setSpellChecker4 convert to spellChecker4 to match bean id or name named spellChecker
+        -->
+        <property name = "name" value = "Generic Text Editor" />
+
+    </bean>
+
+    <!-- Definition for spellChecker bean -->
+    <bean id = "spellChecker4" class = "com.ismeoh.DI.useXml.Beans_Auto_Wiring.ByName.SpellChecker"/>
+
+    <bean id = "textEditor5" class = "com.ismeoh.DI.useXml.Beans_Auto_Wiring.ByType.TextEditor" autowire="byType">
+
+
+        <property name = "name" value = "Generic Text Editor" />
+
+    </bean>
+
+    <!-- Definition for spellChecker bean -->
+    <bean id = "spellChecker5" class = "com.ismeoh.DI.useXml.Beans_Auto_Wiring.ByType.SpellChecker"/>
 
 </beans>

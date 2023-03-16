@@ -11,7 +11,7 @@
         class:类包路径
         name:表示bean别名，可以用多个别名用逗号或分号或空格隔开，一般命名要采用小驼峰命名法
     -->
-    <bean id="messageServiceImpl" class="org.example.byConstructor.MessageServiceImpl" >
+    <bean id="messageServiceImpl" class="com.ismeoh.DI.useXml.byConstructor.MessageServiceImpl" >
         <!--
             使用构造方法注入属性
             name:属性名
@@ -28,7 +28,7 @@
         <constructor-arg name="age" value="10"/>
     </bean>
 
-    <bean id="messagePrinter" class="org.example.byConstructor.MessagePrinter">
+    <bean id="messagePrinter" class="com.ismeoh.DI.useXml.byConstructor.MessagePrinter">
         <!--
             使用构造方法注入属性
             ref:表示属性的类型是一个类，指向bean的ID
